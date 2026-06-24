@@ -88,9 +88,11 @@ const Index = () => {
             onClick={() => scrollTo('home')}
             className="flex items-center gap-2 font-display font-700 text-xl tracking-tight"
           >
-            <span className="flex h-8 w-8 items-center justify-center bg-primary text-primary-foreground rounded-sm">
-              <Icon name="Layers" size={18} />
-            </span>
+            <img
+              src="https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/bucket/981f3f2d-edc4-4f96-9da9-5b224c1912b3.jpg"
+              alt="ПоддонПро"
+              className="h-9 w-9 object-cover rounded-sm"
+            />
             ПОДДОН<span className="text-primary">ПРО</span>
           </button>
           <nav className="hidden md:flex items-center gap-8">
