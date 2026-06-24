@@ -2,9 +2,6 @@ import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 
-const LOGO_URL =
-  'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/bucket/8e487789-8699-4f96-b592-fa240467867f.jpg';
-
 const HERO_IMG =
   'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/a1fd8d4f-00fe-4a99-88bc-ddca02db583c.jpg';
 
@@ -85,10 +82,16 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
 
       {/* HEADER */}
-      <header className="fixed top-0 inset-x-0 z-50 border-b border-border bg-background/90 backdrop-blur-md shadow-sm">
+      <header className="fixed top-0 inset-x-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
         <div className="container flex items-center justify-between h-16">
-          <button onClick={() => scrollTo('home')} className="flex items-center">
-            <img src={LOGO_URL} alt="ПоддонПро" className="h-10 w-auto object-contain" />
+          <button
+            onClick={() => scrollTo('home')}
+            className="flex items-center gap-2 font-display font-700 text-xl tracking-tight"
+          >
+            <span className="flex h-8 w-8 items-center justify-center bg-primary text-primary-foreground rounded-sm">
+              <Icon name="Layers" size={18} />
+            </span>
+            ПОДДОН<span className="text-primary">ПРО</span>
           </button>
           <nav className="hidden md:flex items-center gap-8">
             {NAV.map((n) => (
@@ -133,9 +136,6 @@ const Index = () => {
               <br />
               <span className="text-stroke">любого масштаба</span>
             </h1>
-            <p className="mt-4 text-base text-muted-foreground italic font-display tracking-widest">
-              — опора вашего бизнеса —
-            </p>
             <p
               className="mt-6 max-w-lg text-base text-muted-foreground animate-fade-in"
               style={{ animationDelay: '0.25s', opacity: 0 }}
@@ -391,10 +391,15 @@ const Index = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border bg-foreground">
-        <div className="container py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <img src={LOGO_URL} alt="ПоддонПро" className="h-10 w-auto object-contain brightness-0 invert opacity-80" />
-          <p className="text-sm text-background/50">© 2026 Поддон Про. Производство деревянной тары.</p>
+      <footer className="border-t border-border">
+        <div className="container py-10 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2 font-display font-700 text-lg">
+            <span className="flex h-7 w-7 items-center justify-center bg-primary text-primary-foreground rounded-sm">
+              <Icon name="Layers" size={16} />
+            </span>
+            ПОДДОН<span className="text-primary">ПРО</span>
+          </div>
+          <p className="text-sm text-muted-foreground">© 2026 Поддон Про. Производство деревянной тары.</p>
         </div>
       </footer>
     </div>
