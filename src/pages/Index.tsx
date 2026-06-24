@@ -135,7 +135,27 @@ const Index = () => {
             Точные технические характеристики, отгрузка от 1 штуки, доставка по всей России.
           </p>
           <div
-            className="mt-10 flex flex-wrap gap-4 animate-fade-in"
+            className="mt-6 flex flex-wrap gap-3 animate-fade-in"
+            style={{ animationDelay: '0.35s', opacity: 0 }}
+          >
+            {[
+              { icon: 'RefreshCw', label: 'Б/у поддоны', desc: 'Покупаем и продаём восстановленные' },
+              { icon: 'Ruler', label: 'Нестандартные', desc: 'Любые размеры под ваши задачи' },
+              { icon: 'BadgeCheck', label: 'Новые', desc: 'EPAL, FIN, облегчённые' },
+            ].map((tag) => (
+              <div key={tag.label} className="flex items-center gap-3 bg-secondary/60 border border-border px-4 py-3 rounded-sm">
+                <span className="flex h-9 w-9 items-center justify-center bg-primary text-primary-foreground rounded-sm shrink-0">
+                  <Icon name={tag.icon} size={18} />
+                </span>
+                <div>
+                  <div className="font-display font-600 uppercase text-sm tracking-wide">{tag.label}</div>
+                  <div className="text-xs text-muted-foreground">{tag.desc}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div
+            className="mt-8 flex flex-wrap gap-4 animate-fade-in"
             style={{ animationDelay: '0.4s', opacity: 0 }}
           >
             <Button
