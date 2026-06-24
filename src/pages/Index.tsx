@@ -17,7 +17,7 @@ const PALLETS = [
   {
     name: 'Европоддон EUR',
     tag: 'Стандарт EPAL',
-    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/bdde2214-e5f6-40a8-8a18-ea68ab3e1286.jpg',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/bucket/797a597d-dfb0-4e10-a7dc-aae0d4075514.jpg',
     desc: 'Сертифицированный европейский поддон с клеймом. Универсальное решение для логистики и хранения.',
     specs: {
       Размер: '1200 × 800 мм',
