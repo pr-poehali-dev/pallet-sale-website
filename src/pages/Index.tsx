@@ -2,6 +2,9 @@ import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 
+const LOGO_URL =
+  'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/bucket/8e487789-8699-4f96-b592-fa240467867f.jpg';
+
 const HERO_IMG =
   'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/a1fd8d4f-00fe-4a99-88bc-ddca02db583c.jpg';
 
@@ -22,7 +25,7 @@ const PALLETS = [
     specs: {
       Размер: '1200 × 800 мм',
       Высота: '144 мм',
-      'Настил': '5 досок',
+      Настил: '5 досок',
       'Нагрузка (статич.)': 'до 4000 кг',
       'Нагрузка (динамич.)': 'до 1500 кг',
       'Собств. вес': '22–25 кг',
@@ -38,7 +41,7 @@ const PALLETS = [
     specs: {
       Размер: '1200 × 1000 мм',
       Высота: '145 мм',
-      'Настил': '6 досок',
+      Настил: '6 досок',
       'Нагрузка (статич.)': 'до 6000 кг',
       'Нагрузка (динамич.)': 'до 2000 кг',
       'Собств. вес': '30–35 кг',
@@ -54,7 +57,7 @@ const PALLETS = [
     specs: {
       Размер: '1200 × 800 мм',
       Высота: '120 мм',
-      'Настил': '5 досок',
+      Настил: '5 досок',
       'Нагрузка (статич.)': 'до 2000 кг',
       'Нагрузка (динамич.)': 'до 800 кг',
       'Собств. вес': '12–15 кг',
@@ -80,17 +83,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+
       {/* HEADER */}
-      <header className="fixed top-0 inset-x-0 z-50 border-b border-border/60 bg-background/80 backdrop-blur-md">
+      <header className="fixed top-0 inset-x-0 z-50 border-b border-border bg-background/90 backdrop-blur-md shadow-sm">
         <div className="container flex items-center justify-between h-16">
-          <button
-            onClick={() => scrollTo('home')}
-            className="flex items-center gap-2 font-display font-700 text-xl tracking-tight"
-          >
-            <span className="flex h-8 w-8 items-center justify-center bg-primary text-primary-foreground rounded-sm">
-              <Icon name="Layers" size={18} />
-            </span>
-            ПОДДОН<span className="text-primary">ПРО</span>
+          <button onClick={() => scrollTo('home')} className="flex items-center">
+            <img src={LOGO_URL} alt="ПоддонПро" className="h-10 w-auto object-contain" />
           </button>
           <nav className="hidden md:flex items-center gap-8">
             {NAV.map((n) => (
@@ -111,89 +109,96 @@ const Index = () => {
       </header>
 
       {/* HERO */}
-      <section id="home" className="relative min-h-screen flex items-center pt-16 grid-texture">
+      <section id="home" className="relative min-h-screen flex items-center pt-16">
         <div className="absolute inset-0 z-0">
-          <img src={HERO_IMG} alt="Поддоны" className="h-full w-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
+          <img src={HERO_IMG} alt="Поддоны" className="h-full w-full object-cover opacity-15" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
+          <div className="absolute inset-0 pointer-events-none" style={{
+            backgroundImage: 'repeating-linear-gradient(180deg, transparent, transparent 79px, hsl(32 14% 70% / 0.2) 80px)',
+          }} />
         </div>
-        <div className="container relative z-10 py-24">
-          <div className="flex items-center gap-3 mb-6 animate-fade-in">
-            <span className="h-px w-12 bg-primary" />
-            <span className="text-sm font-500 uppercase tracking-[0.2em] text-primary">
-              Производство деревянной тары
-            </span>
-          </div>
-          <h1
-            className="font-display font-700 uppercase leading-[0.95] tracking-tight animate-fade-in"
-            style={{ fontSize: 'clamp(2.5rem, 8vw, 7rem)', animationDelay: '0.1s', opacity: 0 }}
-          >
-            Поддоны
-            <br />
-            <span className="text-primary">для бизнеса</span>
-            <br />
-            <span className="text-stroke">любого масштаба</span>
-          </h1>
-          <p
-            className="mt-8 max-w-xl text-lg text-muted-foreground animate-fade-in"
-            style={{ animationDelay: '0.25s', opacity: 0 }}
-          >
-            Собственное производство европоддонов, финских и облегчённых паллет.
-            Точные технические характеристики, отгрузка от 1 штуки, доставка по всей России.
-          </p>
-          <div
-            className="mt-6 flex flex-wrap gap-3 animate-fade-in"
-            style={{ animationDelay: '0.35s', opacity: 0 }}
-          >
-            {[
-              { icon: 'RefreshCw', label: 'Б/у поддоны', desc: 'Покупаем и продаём восстановленные' },
-              { icon: 'Ruler', label: 'Нестандартные', desc: 'Любые размеры под ваши задачи' },
-              { icon: 'BadgeCheck', label: 'Новые', desc: 'EPAL, FIN, облегчённые' },
-            ].map((tag) => (
-              <div key={tag.label} className="flex items-center gap-3 bg-secondary/60 border border-border px-4 py-3 rounded-sm">
-                <span className="flex h-9 w-9 items-center justify-center bg-primary text-primary-foreground rounded-sm shrink-0">
-                  <Icon name={tag.icon} size={18} />
-                </span>
-                <div>
-                  <div className="font-display font-600 uppercase text-sm tracking-wide">{tag.label}</div>
-                  <div className="text-xs text-muted-foreground">{tag.desc}</div>
+
+        <div className="container relative z-10 py-24 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="flex items-center gap-3 mb-6 animate-fade-in">
+              <span className="h-px w-12 bg-primary" />
+              <span className="text-sm font-500 uppercase tracking-[0.2em] text-primary">
+                Производство деревянной тары
+              </span>
+            </div>
+            <h1
+              className="font-display font-700 uppercase leading-[0.92] tracking-tight animate-fade-in"
+              style={{ fontSize: 'clamp(2.8rem, 7vw, 6.5rem)', animationDelay: '0.1s', opacity: 0 }}
+            >
+              Поддоны
+              <br />
+              <span className="text-primary">для бизнеса</span>
+              <br />
+              <span className="text-stroke">любого масштаба</span>
+            </h1>
+            <p className="mt-4 text-base text-muted-foreground italic font-display tracking-widest">
+              — опора вашего бизнеса —
+            </p>
+            <p
+              className="mt-6 max-w-lg text-base text-muted-foreground animate-fade-in"
+              style={{ animationDelay: '0.25s', opacity: 0 }}
+            >
+              Собственное производство европоддонов, финских и облегчённых паллет.
+              Точные технические характеристики, отгрузка от 1 штуки, доставка по всей России.
+            </p>
+            <div
+              className="mt-6 flex flex-wrap gap-3 animate-fade-in"
+              style={{ animationDelay: '0.35s', opacity: 0 }}
+            >
+              {[
+                { icon: 'RefreshCw', label: 'Б/у поддоны', desc: 'Покупаем и продаём восстановленные' },
+                { icon: 'Ruler', label: 'Нестандартные', desc: 'Любые размеры под ваши задачи' },
+                { icon: 'BadgeCheck', label: 'Новые', desc: 'EPAL, FIN, облегчённые' },
+              ].map((tag) => (
+                <div key={tag.label} className="flex items-center gap-3 bg-card border border-border px-4 py-3 rounded-sm shadow-sm">
+                  <span className="flex h-9 w-9 items-center justify-center bg-primary text-primary-foreground rounded-sm shrink-0">
+                    <Icon name={tag.icon} size={18} />
+                  </span>
+                  <div>
+                    <div className="font-display font-600 uppercase text-sm tracking-wide">{tag.label}</div>
+                    <div className="text-xs text-muted-foreground">{tag.desc}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div
+              className="mt-8 flex flex-wrap gap-4 animate-fade-in"
+              style={{ animationDelay: '0.4s', opacity: 0 }}
+            >
+              <Button size="lg" onClick={() => scrollTo('catalog')} className="font-display uppercase tracking-wide text-base h-14 px-8">
+                Смотреть каталог
+                <Icon name="ArrowRight" size={18} className="ml-2" />
+              </Button>
+              <Button size="lg" variant="outline" onClick={() => scrollTo('delivery')} className="font-display uppercase tracking-wide text-base h-14 px-8">
+                Условия доставки
+              </Button>
+            </div>
           </div>
-          <div
-            className="mt-8 flex flex-wrap gap-4 animate-fade-in"
-            style={{ animationDelay: '0.4s', opacity: 0 }}
-          >
-            <Button
-              size="lg"
-              onClick={() => scrollTo('catalog')}
-              className="font-display uppercase tracking-wide text-base h-14 px-8"
-            >
-              Смотреть каталог
-              <Icon name="ArrowRight" size={18} className="ml-2" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => scrollTo('delivery')}
-              className="font-display uppercase tracking-wide text-base h-14 px-8 border-border"
-            >
-              Условия доставки
-            </Button>
+
+          <div className="hidden lg:flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.3s', opacity: 0 }}>
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-3xl scale-110" />
+              <img src={LOGO_URL} alt="ПоддонПро" className="relative w-full max-w-sm object-contain drop-shadow-xl" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* STATS */}
-      <section className="border-y border-border bg-secondary/40">
-        <div className="container grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
+      <section className="border-y border-border bg-foreground">
+        <div className="container grid grid-cols-2 md:grid-cols-4 divide-x divide-background/10">
           {STATS.map((s) => (
             <div key={s.label} className="py-8 px-4 text-center">
-              <div className="font-display font-700 text-4xl md:text-5xl">
+              <div className="font-display font-700 text-4xl md:text-5xl text-background">
                 {s.value}
                 <span className="text-primary text-2xl align-top ml-1">{s.suffix}</span>
               </div>
-              <div className="mt-1 text-xs uppercase tracking-wide text-muted-foreground">{s.label}</div>
+              <div className="mt-1 text-xs uppercase tracking-wide text-background/55">{s.label}</div>
             </div>
           ))}
         </div>
@@ -209,7 +214,7 @@ const Index = () => {
             </h2>
           </div>
           <p className="max-w-sm text-muted-foreground">
-            Нажмите на карточку, чтобы развернуть полные технические характеристики и размеры каждого типа.
+            Нажмите на карточку, чтобы развернуть полные технические характеристики и размеры.
           </p>
         </div>
 
@@ -220,52 +225,44 @@ const Index = () => {
               <div
                 key={p.name}
                 onClick={() => setActive(open ? null : i)}
-                className={`group cursor-pointer border bg-card transition-all duration-300 overflow-hidden ${
-                  open ? 'border-primary' : 'border-border hover:border-muted-foreground/50'
+                className={`group cursor-pointer border bg-card transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md ${
+                  open ? 'border-primary' : 'border-border hover:border-primary/50'
                 }`}
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-52 overflow-hidden">
                   <img
                     src={p.img}
                     alt={p.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
-                  <span className="absolute top-3 left-3 inline-block px-3 py-1 text-xs uppercase tracking-wide bg-background/80 backdrop-blur-sm text-muted-foreground rounded-sm">
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/60 to-transparent" />
+                  <span className="absolute top-3 left-3 inline-block px-3 py-1 text-xs uppercase tracking-wide bg-primary text-primary-foreground rounded-sm font-display font-600">
                     {p.tag}
                   </span>
                 </div>
 
-                <div className="p-8">
-                  <h3 className="font-display font-600 uppercase text-2xl tracking-tight">{p.name}</h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                <div className="p-6">
+                  <h3 className="font-display font-700 uppercase text-xl tracking-tight">{p.name}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
 
-                  <div
-                    className={`grid transition-all duration-300 ${
-                      open ? 'grid-rows-[1fr] mt-6 opacity-100' : 'grid-rows-[0fr] opacity-0'
-                    }`}
-                  >
+                  <div className={`grid transition-all duration-300 ${open ? 'grid-rows-[1fr] mt-5 opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
                     <div className="overflow-hidden">
                       <dl className="divide-y divide-border border-t border-border">
                         {Object.entries(p.specs).map(([k, v]) => (
                           <div key={k} className="flex items-center justify-between py-2.5 text-sm">
                             <dt className="text-muted-foreground">{k}</dt>
-                            <dd className="font-500 font-display">{v}</dd>
+                            <dd className="font-600 font-display text-foreground">{v}</dd>
                           </div>
                         ))}
                       </dl>
                     </div>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
+                  <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
                     <span className="font-display font-700 text-2xl text-primary">{p.price}</span>
                     <span className="flex items-center gap-1 text-xs uppercase tracking-wide text-muted-foreground">
                       {open ? 'Свернуть' : 'Характеристики'}
-                      <Icon
-                        name="ChevronDown"
-                        size={16}
-                        className={`transition-transform ${open ? 'rotate-180' : ''}`}
-                      />
+                      <Icon name="ChevronDown" size={16} className={`transition-transform ${open ? 'rotate-180' : ''}`} />
                     </span>
                   </div>
                 </div>
@@ -276,7 +273,9 @@ const Index = () => {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="border-y border-border bg-secondary/30">
+      <section id="about" className="border-y border-border bg-secondary" style={{
+        backgroundImage: 'repeating-linear-gradient(180deg, transparent, transparent 59px, hsl(32 14% 70% / 0.18) 60px)',
+      }}>
         <div className="container py-24 md:py-32 grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-sm font-500 uppercase tracking-[0.2em] text-primary">03 / О компании</span>
@@ -311,11 +310,11 @@ const Index = () => {
             <img
               src={HERO_IMG}
               alt="Производство поддонов"
-              className="w-full aspect-[4/5] object-cover rounded-sm border border-border"
+              className="w-full aspect-[4/5] object-cover rounded-sm border border-border shadow-lg"
             />
-            <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-sm hidden md:block">
-              <div className="font-display font-700 text-4xl">ГОСТ</div>
-              <div className="text-xs uppercase tracking-wide">по всем позициям</div>
+            <div className="absolute -bottom-5 -right-5 bg-primary text-primary-foreground p-5 rounded-sm hidden md:block shadow-lg">
+              <div className="font-display font-700 text-3xl">ГОСТ</div>
+              <div className="text-xs uppercase tracking-wide opacity-90">по всем позициям</div>
             </div>
           </div>
         </div>
@@ -333,11 +332,11 @@ const Index = () => {
             { icon: 'MapPin', t: 'По всей России', d: 'Отгрузка транспортными компаниями в любой регион. Поможем оформить экспорт.' },
             { icon: 'Package', t: 'От 1 штуки', d: 'Работаем без минимальной партии. Розница и опт по гибким ценам.' },
           ].map((d) => (
-            <div key={d.t} className="border border-border bg-card p-8 hover:border-primary transition-colors">
-              <span className="flex h-14 w-14 items-center justify-center bg-secondary text-primary rounded-sm">
+            <div key={d.t} className="border border-border bg-card p-8 hover:border-primary hover:shadow-md transition-all">
+              <span className="flex h-14 w-14 items-center justify-center bg-primary/10 text-primary rounded-sm border border-primary/20">
                 <Icon name={d.icon} size={26} />
               </span>
-              <h3 className="mt-6 font-display font-600 uppercase text-xl tracking-wide">{d.t}</h3>
+              <h3 className="mt-6 font-display font-700 uppercase text-xl tracking-wide">{d.t}</h3>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{d.d}</p>
             </div>
           ))}
@@ -345,7 +344,7 @@ const Index = () => {
       </section>
 
       {/* CONTACTS */}
-      <section id="contacts" className="border-t border-border bg-secondary/30">
+      <section id="contacts" className="border-t border-border bg-secondary">
         <div className="container py-24 md:py-32 grid lg:grid-cols-2 gap-16">
           <div>
             <span className="text-sm font-500 uppercase tracking-[0.2em] text-primary">05 / Контакты</span>
@@ -362,7 +361,7 @@ const Index = () => {
                 { icon: 'Clock', t: 'Режим работы', d: 'Пн–Сб 8:00 – 20:00' },
               ].map((c) => (
                 <div key={c.t} className="flex gap-4 items-center">
-                  <span className="flex h-12 w-12 items-center justify-center bg-primary text-primary-foreground rounded-sm">
+                  <span className="flex h-12 w-12 items-center justify-center bg-primary text-primary-foreground rounded-sm shadow-sm">
                     <Icon name={c.icon} size={20} />
                   </span>
                   <div>
@@ -374,27 +373,24 @@ const Index = () => {
             </div>
           </div>
 
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="border border-border bg-card p-8 md:p-10 rounded-sm"
-          >
-            <h3 className="font-display font-600 uppercase text-2xl tracking-wide">Рассчитать заказ</h3>
+          <form onSubmit={(e) => e.preventDefault()} className="border border-border bg-card p-8 md:p-10 rounded-sm shadow-sm">
+            <h3 className="font-display font-700 uppercase text-2xl tracking-wide">Рассчитать заказ</h3>
             <p className="mt-2 text-sm text-muted-foreground">
               Оставьте заявку — менеджер пришлёт спецификацию и цены.
             </p>
             <div className="mt-6 space-y-4">
               <input
                 placeholder="Ваше имя"
-                className="w-full h-12 px-4 bg-secondary border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors"
+                className="w-full h-12 px-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors"
               />
               <input
                 placeholder="Телефон"
-                className="w-full h-12 px-4 bg-secondary border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors"
+                className="w-full h-12 px-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors"
               />
               <textarea
                 placeholder="Какие поддоны и сколько нужно?"
                 rows={4}
-                className="w-full p-4 bg-secondary border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors resize-none"
+                className="w-full p-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors resize-none"
               />
               <Button type="submit" size="lg" className="w-full font-display uppercase tracking-wide h-14 text-base">
                 Отправить заявку
@@ -406,15 +402,10 @@ const Index = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border">
-        <div className="container py-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 font-display font-700 text-lg">
-            <span className="flex h-7 w-7 items-center justify-center bg-primary text-primary-foreground rounded-sm">
-              <Icon name="Layers" size={16} />
-            </span>
-            ПОДДОН<span className="text-primary">ПРО</span>
-          </div>
-          <p className="text-sm text-muted-foreground">© 2026 Поддон Про. Производство деревянной тары.</p>
+      <footer className="border-t border-border bg-foreground">
+        <div className="container py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <img src={LOGO_URL} alt="ПоддонПро" className="h-10 w-auto object-contain brightness-0 invert opacity-80" />
+          <p className="text-sm text-background/50">© 2026 Поддон Про. Производство деревянной тары.</p>
         </div>
       </footer>
     </div>
