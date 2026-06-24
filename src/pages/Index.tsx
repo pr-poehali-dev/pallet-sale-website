@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Icon from '@/components/ui/icon';
 import { Button } from '@/components/ui/button';
 
@@ -70,6 +70,80 @@ const STATS = [
   { value: '48', suffix: 'ч', label: 'срок отгрузки' },
   { value: '500', suffix: '+', label: 'клиентов по РФ' },
 ];
+
+const SEND_ORDER_URL = 'https://functions.poehali.dev/a3e75be5-b96d-45f4-8de3-025ffb989dcb';
+
+function FormOrder() {
+  const nameRef = useRef<HTMLInputElement>(null);
+  const phoneRef = useRef<HTMLInputElement>(null);
+  const msgRef = useRef<HTMLTextAreaElement>(null);
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const res = await fetch(SEND_ORDER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: nameRef.current?.value || '',
+          phone: phoneRef.current?.value || '',
+          message: msgRef.current?.value || '',
+        }),
+      });
+      if (res.ok) {
+        setStatus('success');
+        if (nameRef.current) nameRef.current.value = '';
+        if (phoneRef.current) phoneRef.current.value = '';
+        if (msgRef.current) msgRef.current.value = '';
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="border border-border bg-card p-8 md:p-10 rounded-sm shadow-sm">
+      <h3 className="font-display font-700 uppercase text-2xl tracking-wide">Рассчитать заказ</h3>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Оставьте заявку — менеджер пришлёт спецификацию и цены.
+      </p>
+      <div className="mt-6 space-y-4">
+        <input
+          ref={nameRef}
+          placeholder="Ваше имя"
+          required
+          className="w-full h-12 px-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors"
+        />
+        <input
+          ref={phoneRef}
+          placeholder="Телефон"
+          required
+          className="w-full h-12 px-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors"
+        />
+        <textarea
+          ref={msgRef}
+          placeholder="Какие поддоны и сколько нужно?"
+          rows={4}
+          className="w-full p-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors resize-none"
+        />
+        {status === 'success' && (
+          <p className="text-sm text-green-600 font-500">Заявка отправлена! Мы свяжемся с вами.</p>
+        )}
+        {status === 'error' && (
+          <p className="text-sm text-red-500 font-500">Ошибка отправки. Попробуйте позже.</p>
+        )}
+        <Button type="submit" size="lg" disabled={status === 'loading'} className="w-full font-display uppercase tracking-wide h-14 text-base">
+          {status === 'loading' ? 'Отправка...' : 'Отправить заявку'}
+          <Icon name="Send" size={18} className="ml-2" />
+        </Button>
+      </div>
+    </form>
+  );
+}
 
 const Index = () => {
   const [active, setActive] = useState<number | null>(0);
@@ -364,31 +438,7 @@ const Index = () => {
             </div>
           </div>
 
-          <form onSubmit={(e) => e.preventDefault()} className="border border-border bg-card p-8 md:p-10 rounded-sm shadow-sm">
-            <h3 className="font-display font-700 uppercase text-2xl tracking-wide">Рассчитать заказ</h3>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Оставьте заявку — менеджер пришлёт спецификацию и цены.
-            </p>
-            <div className="mt-6 space-y-4">
-              <input
-                placeholder="Ваше имя"
-                className="w-full h-12 px-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors"
-              />
-              <input
-                placeholder="Телефон"
-                className="w-full h-12 px-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors"
-              />
-              <textarea
-                placeholder="Какие поддоны и сколько нужно?"
-                rows={4}
-                className="w-full p-4 bg-background border border-border rounded-sm text-sm focus:border-primary focus:outline-none transition-colors resize-none"
-              />
-              <Button type="submit" size="lg" className="w-full font-display uppercase tracking-wide h-14 text-base">
-                Отправить заявку
-                <Icon name="Send" size={18} className="ml-2" />
-              </Button>
-            </div>
-          </form>
+          <FormOrder />
         </div>
       </section>
 
