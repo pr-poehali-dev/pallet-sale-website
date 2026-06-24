@@ -49,7 +49,7 @@ const PALLETS = [
   {
     name: 'Поддон облегчённый',
     tag: 'Эконом',
-    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/a4f4f4f4-ec1a-4536-8259-b90cb15e39de.jpg',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/bucket/0154f33b-dc7d-47ea-940c-7cd72f336c1c.png',
     desc: 'Лёгкий одноразовый поддон для разовых отгрузок и экспортных поставок без возврата тары.',
     specs: {
       Размер: '1200 × 800 мм',
