@@ -346,9 +346,10 @@ const Index = () => {
             </h2>
             <div className="mt-10 space-y-6">
               {[
-                { icon: 'Phone', t: 'Телефон', d: '+7 (495) 000-00-00' },
-                { icon: 'Mail', t: 'Почта', d: 'sales@palletprom.ru' },
-                { icon: 'MapPin', t: 'Адрес', d: 'Москва, Промзона «Восток», 14' },
+                { icon: 'Phone', t: 'Телефон', d: '8 (915) 632-42-24' },
+                { icon: 'Mail', t: 'Почта', d: 'info@поддонпро.рф' },
+                { icon: 'MapPin', t: 'Адрес', d: 'г. Одинцово, ул. Южная, д. 14б' },
+                { icon: 'MapPin', t: 'Адрес', d: 'г. Вязьма, Смоленская обл., ул. Кронштадтская, 111' },
                 { icon: 'Clock', t: 'Режим работы', d: 'Пн–Сб 8:00 – 20:00' },
               ].map((c) => (
                 <div key={c.t} className="flex gap-4 items-center">
