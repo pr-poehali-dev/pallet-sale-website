@@ -26,12 +26,12 @@ def handler(event: dict, context) -> dict:
 
     smtp_host = 'smtp.yandex.ru'
     smtp_port = 465
-    smtp_user = 'info@xn--e1afmkfd4d.xn--p1ai'
+    smtp_user = 'aleksandergalizin@yandex.ru'
     smtp_password = os.environ['SMTP_PASSWORD']
     to_email = 'aleksandergalizin@yandex.ru'
 
     msg = MIMEMultipart()
-    msg['From'] = 'info@поддонпро.рф'
+    msg['From'] = 'aleksandergalizin@yandex.ru'
     msg['To'] = 'aleksandergalizin@yandex.ru'
     msg['Subject'] = f'Новая заявка с сайта — {name}'
 
