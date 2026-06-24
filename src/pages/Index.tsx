@@ -17,6 +17,7 @@ const PALLETS = [
   {
     name: 'Европоддон EUR',
     tag: 'Стандарт EPAL',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/6dcbdffb-8b32-4aa8-88fb-58afe1e59bf7.jpg',
     desc: 'Сертифицированный европейский поддон с клеймом. Универсальное решение для логистики и хранения.',
     specs: {
       Размер: '1200 × 800 мм',
@@ -24,13 +25,14 @@ const PALLETS = [
       'Нагрузка (статич.)': 'до 4000 кг',
       'Нагрузка (динамич.)': 'до 1500 кг',
       'Собств. вес': '22–25 кг',
-      Материал: 'Хвойная древесина',
+      Материал: 'Хвойные / лиственные породы',
     },
     price: 'от 450 ₽',
   },
   {
     name: 'Финский поддон FIN',
     tag: 'Размер 1200×1000',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/f2a6761f-2047-486e-b6b9-133d2117cc74.jpg',
     desc: 'Усиленная конструкция для тяжёлых грузов. Идеален для химической и пищевой промышленности.',
     specs: {
       Размер: '1200 × 1000 мм',
@@ -38,13 +40,14 @@ const PALLETS = [
       'Нагрузка (статич.)': 'до 6000 кг',
       'Нагрузка (динамич.)': 'до 2000 кг',
       'Собств. вес': '30–35 кг',
-      Материал: 'Хвойная древесина',
+      Материал: 'Хвойные / лиственные породы',
     },
-    price: 'от 590 ₽',
+    price: 'от 500 ₽',
   },
   {
     name: 'Поддон облегчённый',
     tag: 'Эконом',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/2406cd68-ec1a-4536-8259-b90cb15e39de.jpg',
     desc: 'Лёгкий одноразовый поддон для разовых отгрузок и экспортных поставок без возврата тары.',
     specs: {
       Размер: '1200 × 800 мм',
@@ -52,7 +55,7 @@ const PALLETS = [
       'Нагрузка (статич.)': 'до 2000 кг',
       'Нагрузка (динамич.)': 'до 800 кг',
       'Собств. вес': '12–15 кг',
-      Материал: 'Сосна / ель',
+      Материал: 'Сосна / ель / берёза',
     },
     price: 'от 280 ₽',
   },
@@ -214,20 +217,24 @@ const Index = () => {
               <div
                 key={p.name}
                 onClick={() => setActive(open ? null : i)}
-                className={`group cursor-pointer border bg-card p-8 transition-all duration-300 ${
+                className={`group cursor-pointer border bg-card transition-all duration-300 overflow-hidden ${
                   open ? 'border-primary' : 'border-border hover:border-muted-foreground/50'
                 }`}
               >
-                <div className="flex items-start justify-between">
-                  <span className="inline-block px-3 py-1 text-xs uppercase tracking-wide bg-secondary text-muted-foreground rounded-sm">
+                <div className="relative h-48 overflow-hidden">
+                  <img
+                    src={p.img}
+                    alt={p.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card/80 to-transparent" />
+                  <span className="absolute top-3 left-3 inline-block px-3 py-1 text-xs uppercase tracking-wide bg-background/80 backdrop-blur-sm text-muted-foreground rounded-sm">
                     {p.tag}
-                  </span>
-                  <span className="flex h-12 w-12 items-center justify-center bg-secondary rounded-sm text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                    <Icon name="Box" size={22} />
                   </span>
                 </div>
 
-                <h3 className="mt-6 font-display font-600 uppercase text-2xl tracking-tight">{p.name}</h3>
+                <div className="p-8">
+                <h3 className="font-display font-600 uppercase text-2xl tracking-tight">{p.name}</h3>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
 
                 <div
@@ -257,6 +264,7 @@ const Index = () => {
                       className={`transition-transform ${open ? 'rotate-180' : ''}`}
                     />
                   </span>
+                </div>
                 </div>
               </div>
             );
