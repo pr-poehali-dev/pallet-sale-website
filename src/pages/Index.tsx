@@ -33,7 +33,7 @@ const PALLETS = [
   {
     name: 'Финский поддон FIN',
     tag: 'Размер 1200×1000',
-    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/a7707eef-27e5-4941-990b-17e9ffcb0103.jpg',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/bucket/aa4a0929-bf53-42b1-b8d9-9785142a746a.jpg',
     desc: 'Усиленная конструкция для тяжёлых грузов. Идеален для химической и пищевой промышленности.',
     specs: {
       Размер: '1200 × 1000 мм',
