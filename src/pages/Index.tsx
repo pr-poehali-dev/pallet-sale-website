@@ -301,7 +301,7 @@ const Index = () => {
               src="https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/bucket/134e68d9-83b2-4462-8056-d1397d5c100e.jpg"
               alt="Производство поддонов"
               className="w-full aspect-[4/5] object-cover rounded-sm border border-border shadow-lg"
-              style={{ objectPosition: '30% center' }}
+              style={{ objectPosition: '15% center' }}
             />
             <div className="absolute -bottom-5 -right-5 bg-primary text-primary-foreground p-5 rounded-sm hidden md:block shadow-lg">
               <div className="font-display font-700 text-3xl">ГОСТ</div>
