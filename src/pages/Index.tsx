@@ -59,10 +59,10 @@ const PALLETS = [
 ];
 
 const STATS = [
-  { value: '15', suffix: 'лет', label: 'на рынке тары' },
-  { value: '2.5', suffix: 'млн', label: 'поддонов в год' },
+  { value: '5', suffix: 'лет', label: 'на рынке тары' },
+  { value: '40', suffix: 'тыс.', label: 'поддонов в месяц' },
   { value: '48', suffix: 'ч', label: 'срок отгрузки' },
-  { value: '320', suffix: '+', label: 'клиентов по РФ' },
+  { value: '100', suffix: '+', label: 'клиентов по РФ' },
 ];
 
 const Index = () => {
