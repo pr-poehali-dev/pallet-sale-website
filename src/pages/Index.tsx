@@ -283,7 +283,6 @@ const Index = () => {
               {[
                 { icon: 'ShieldCheck', t: 'Сертификация', d: 'Соответствие EPAL и ISPM-15 для экспорта' },
                 { icon: 'Factory', t: 'Своё производство', d: 'Полный цикл без посредников и наценок' },
-                { icon: 'Recycle', t: 'Камерная сушка', d: 'Влажность древесины не выше 22%' },
               ].map((f) => (
                 <div key={f.t} className="flex gap-4">
                   <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-primary text-primary-foreground rounded-sm">
