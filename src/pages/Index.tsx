@@ -109,16 +109,13 @@ const Index = () => {
       </header>
 
       {/* HERO */}
-      <section id="home" className="relative min-h-screen flex items-center pt-16">
+      <section id="home" className="relative min-h-screen flex items-center pt-16 grid-texture">
         <div className="absolute inset-0 z-0">
-          <img src={HERO_IMG} alt="Поддоны" className="h-full w-full object-cover opacity-15" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
-          <div className="absolute inset-0 pointer-events-none" style={{
-            backgroundImage: 'repeating-linear-gradient(180deg, transparent, transparent 79px, hsl(32 14% 70% / 0.2) 80px)',
-          }} />
+          <img src={HERO_IMG} alt="Поддоны" className="h-full w-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
         </div>
 
-        <div className="container relative z-10 py-24 grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container relative z-10 py-24">
           <div>
             <div className="flex items-center gap-3 mb-6 animate-fade-in">
               <span className="h-px w-12 bg-primary" />
@@ -180,12 +177,6 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="hidden lg:flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.3s', opacity: 0 }}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/10 rounded-2xl blur-3xl scale-110" />
-              <img src={LOGO_URL} alt="ПоддонПро" className="relative w-full max-w-sm object-contain drop-shadow-xl" />
-            </div>
-          </div>
         </div>
       </section>
 
@@ -273,9 +264,7 @@ const Index = () => {
       </section>
 
       {/* ABOUT */}
-      <section id="about" className="border-y border-border bg-secondary" style={{
-        backgroundImage: 'repeating-linear-gradient(180deg, transparent, transparent 59px, hsl(32 14% 70% / 0.18) 60px)',
-      }}>
+      <section id="about" className="border-y border-border bg-secondary/30">
         <div className="container py-24 md:py-32 grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <span className="text-sm font-500 uppercase tracking-[0.2em] text-primary">03 / О компании</span>
