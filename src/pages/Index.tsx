@@ -17,11 +17,12 @@ const PALLETS = [
   {
     name: 'Европоддон EUR',
     tag: 'Стандарт EPAL',
-    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/6dcbdffb-8b32-4aa8-88fb-58afe1e59bf7.jpg',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/bdde2214-e5f6-40a8-8a18-ea68ab3e1286.jpg',
     desc: 'Сертифицированный европейский поддон с клеймом. Универсальное решение для логистики и хранения.',
     specs: {
       Размер: '1200 × 800 мм',
       Высота: '144 мм',
+      'Настил': '5 досок',
       'Нагрузка (статич.)': 'до 4000 кг',
       'Нагрузка (динамич.)': 'до 1500 кг',
       'Собств. вес': '22–25 кг',
@@ -32,11 +33,12 @@ const PALLETS = [
   {
     name: 'Финский поддон FIN',
     tag: 'Размер 1200×1000',
-    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/f2a6761f-2047-486e-b6b9-133d2117cc74.jpg',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/a7707eef-27e5-4941-990b-17e9ffcb0103.jpg',
     desc: 'Усиленная конструкция для тяжёлых грузов. Идеален для химической и пищевой промышленности.',
     specs: {
       Размер: '1200 × 1000 мм',
       Высота: '145 мм',
+      'Настил': '6 досок',
       'Нагрузка (статич.)': 'до 6000 кг',
       'Нагрузка (динамич.)': 'до 2000 кг',
       'Собств. вес': '30–35 кг',
@@ -47,11 +49,12 @@ const PALLETS = [
   {
     name: 'Поддон облегчённый',
     tag: 'Эконом',
-    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/2406cd68-ec1a-4536-8259-b90cb15e39de.jpg',
+    img: 'https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/files/a4f4f4f4-ec1a-4536-8259-b90cb15e39de.jpg',
     desc: 'Лёгкий одноразовый поддон для разовых отгрузок и экспортных поставок без возврата тары.',
     specs: {
       Размер: '1200 × 800 мм',
       Высота: '120 мм',
+      'Настил': '5 досок',
       'Нагрузка (статич.)': 'до 2000 кг',
       'Нагрузка (динамич.)': 'до 800 кг',
       'Собств. вес': '12–15 кг',
@@ -181,7 +184,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* STATS MARQUEE */}
+      {/* STATS */}
       <section className="border-y border-border bg-secondary/40">
         <div className="container grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
           {STATS.map((s) => (
@@ -234,37 +237,37 @@ const Index = () => {
                 </div>
 
                 <div className="p-8">
-                <h3 className="font-display font-600 uppercase text-2xl tracking-tight">{p.name}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
+                  <h3 className="font-display font-600 uppercase text-2xl tracking-tight">{p.name}</h3>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{p.desc}</p>
 
-                <div
-                  className={`grid transition-all duration-300 ${
-                    open ? 'grid-rows-[1fr] mt-6 opacity-100' : 'grid-rows-[0fr] opacity-0'
-                  }`}
-                >
-                  <div className="overflow-hidden">
-                    <dl className="divide-y divide-border border-t border-border">
-                      {Object.entries(p.specs).map(([k, v]) => (
-                        <div key={k} className="flex items-center justify-between py-2.5 text-sm">
-                          <dt className="text-muted-foreground">{k}</dt>
-                          <dd className="font-500 font-display">{v}</dd>
-                        </div>
-                      ))}
-                    </dl>
+                  <div
+                    className={`grid transition-all duration-300 ${
+                      open ? 'grid-rows-[1fr] mt-6 opacity-100' : 'grid-rows-[0fr] opacity-0'
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <dl className="divide-y divide-border border-t border-border">
+                        {Object.entries(p.specs).map(([k, v]) => (
+                          <div key={k} className="flex items-center justify-between py-2.5 text-sm">
+                            <dt className="text-muted-foreground">{k}</dt>
+                            <dd className="font-500 font-display">{v}</dd>
+                          </div>
+                        ))}
+                      </dl>
+                    </div>
                   </div>
-                </div>
 
-                <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
-                  <span className="font-display font-700 text-2xl text-primary">{p.price}</span>
-                  <span className="flex items-center gap-1 text-xs uppercase tracking-wide text-muted-foreground">
-                    {open ? 'Свернуть' : 'Характеристики'}
-                    <Icon
-                      name="ChevronDown"
-                      size={16}
-                      className={`transition-transform ${open ? 'rotate-180' : ''}`}
-                    />
-                  </span>
-                </div>
+                  <div className="mt-6 flex items-center justify-between border-t border-border pt-5">
+                    <span className="font-display font-700 text-2xl text-primary">{p.price}</span>
+                    <span className="flex items-center gap-1 text-xs uppercase tracking-wide text-muted-foreground">
+                      {open ? 'Свернуть' : 'Характеристики'}
+                      <Icon
+                        name="ChevronDown"
+                        size={16}
+                        className={`transition-transform ${open ? 'rotate-180' : ''}`}
+                      />
+                    </span>
+                  </div>
                 </div>
               </div>
             );
@@ -283,7 +286,7 @@ const Index = () => {
               которой <span className="text-primary">доверяют</span>
             </h2>
             <p className="mt-8 text-muted-foreground leading-relaxed">
-              «ПАЛЛЕТПРОМ» — производитель деревянной тары с собственным цехом сушки и сборки.
+              «Поддон Про» — производитель деревянной тары с собственным цехом сушки и сборки.
               Мы контролируем качество на каждом этапе: от отбора пиломатериала до финального клеймения.
             </p>
             <div className="mt-8 space-y-4">
