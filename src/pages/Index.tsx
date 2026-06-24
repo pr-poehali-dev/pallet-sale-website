@@ -84,7 +84,7 @@ const Index = () => {
             <span className="flex h-8 w-8 items-center justify-center bg-primary text-primary-foreground rounded-sm">
               <Icon name="Layers" size={18} />
             </span>
-            ПАЛЛЕТ<span className="text-primary">ПРОМ</span>
+            ПОДДОН<span className="text-primary">ПРО</span>
           </button>
           <nav className="hidden md:flex items-center gap-8">
             {NAV.map((n) => (
@@ -381,9 +381,9 @@ const Index = () => {
             <span className="flex h-7 w-7 items-center justify-center bg-primary text-primary-foreground rounded-sm">
               <Icon name="Layers" size={16} />
             </span>
-            ПАЛЛЕТ<span className="text-primary">ПРОМ</span>
+            ПОДДОН<span className="text-primary">ПРО</span>
           </div>
-          <p className="text-sm text-muted-foreground">© 2026 ПАЛЛЕТПРОМ. Производство деревянной тары.</p>
+          <p className="text-sm text-muted-foreground">© 2026 Поддон Про. Производство деревянной тары.</p>
         </div>
       </footer>
     </div>
