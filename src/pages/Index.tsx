@@ -183,15 +183,15 @@ const Index = () => {
       </section>
 
       {/* STATS */}
-      <section className="border-y border-border bg-foreground">
-        <div className="container grid grid-cols-2 md:grid-cols-4 divide-x divide-background/10">
+      <section className="border-y border-border" style={{ backgroundColor: 'hsl(25 35% 22%)' }}>
+        <div className="container grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
           {STATS.map((s) => (
             <div key={s.label} className="py-8 px-4 text-center">
-              <div className="font-display font-700 text-4xl md:text-5xl text-background">
+              <div className="font-display font-700 text-4xl md:text-5xl text-white/90">
                 {s.value}
                 <span className="text-primary text-2xl align-top ml-1">{s.suffix}</span>
               </div>
-              <div className="mt-1 text-xs uppercase tracking-wide text-background/55">{s.label}</div>
+              <div className="mt-1 text-xs uppercase tracking-wide text-white/50">{s.label}</div>
             </div>
           ))}
         </div>
@@ -393,15 +393,17 @@ const Index = () => {
       </section>
 
       {/* FOOTER */}
-      <footer className="border-t border-border">
+      <footer className="border-t border-border" style={{ backgroundColor: 'hsl(25 35% 22%)' }}>
         <div className="container py-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 font-display font-700 text-lg">
-            <span className="flex h-7 w-7 items-center justify-center bg-primary text-primary-foreground rounded-sm">
-              <Icon name="Layers" size={16} />
-            </span>
+          <div className="flex items-center gap-2 font-display font-700 text-lg text-white/90">
+            <img
+              src="https://cdn.poehali.dev/projects/f64c35f9-7939-4c59-a855-abfaa7146c9e/bucket/981f3f2d-edc4-4f96-9da9-5b224c1912b3.jpg"
+              alt="ПоддонПро"
+              className="h-7 w-7 object-cover rounded-sm"
+            />
             ПОДДОН<span className="text-primary">ПРО</span>
           </div>
-          <p className="text-sm text-muted-foreground">© 2026 Поддон Про. Производство деревянной тары.</p>
+          <p className="text-sm text-white/40">© 2026 Поддон Про. Производство деревянной тары.</p>
         </div>
       </footer>
     </div>
