@@ -62,7 +62,7 @@ const STATS = [
   { value: '5', suffix: 'лет', label: 'на рынке тары' },
   { value: '40', suffix: 'тыс.', label: 'поддонов в месяц' },
   { value: '48', suffix: 'ч', label: 'срок отгрузки' },
-  { value: '100', suffix: '+', label: 'клиентов по РФ' },
+  { value: '500', suffix: '+', label: 'клиентов по РФ' },
 ];
 
 const Index = () => {
